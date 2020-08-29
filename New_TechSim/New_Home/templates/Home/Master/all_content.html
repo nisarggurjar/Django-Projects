@@ -1,0 +1,65 @@
+{% extends 'Home/Master/admin_base.html' %}
+{% load static %}
+{% block body %}
+
+
+	<!--Main container start -->
+	<main class="ttr-wrapper">
+		<div class="container-fluid">
+			<div class="db-breadcrumb">
+				<ul class="db-breadcrumb-list">
+					<li><a href="courses.html#"><i class="fa fa-home"></i>Home</a></li>
+					<li>Courses</li>
+				</ul>
+			</div>
+			<div class="row">
+				<!-- Your Profile Views Chart -->
+				<div class="col-lg-12 m-b30">
+					<div class="widget-box">
+						<div class="wc-title">
+							<a href="{% url 'content' 'Add' c_id %}" class="btn green radius-xl outline">Add New Content</a>
+						</div>
+						<div class="widget-inner">
+							{% for i in titles %}<div class="card-courses-list admin-courses">
+								<div class="card-courses-full-dec">
+									<div class="card-courses-title">
+                                        <h4>{{ forloop.counter }}. {{ i.name }}
+                                            <a href="{% url 'content' 'Edit' i.id %}"><i class="fa fa-pencil"></i></a>
+                                            <a href="{% url 'content' 'Delete' i.id %}"><i class="fa fa-trash"></i></a>
+                                        </h4>
+									</div>
+									<div style="padding-left:50px;">
+										<ul class="">
+											{% if i.S1 %}<li>{{ i.S1 }}</li>{% endif %}
+                                            {% if i.S2 %}<li>{{ i.S2 }}</li>{% endif %}
+                                            {% if i.S3 %}<li>{{ i.S3 }}</li>{% endif %}
+                                            {% if i.S4 %}<li>{{ i.S4 }}</li>{% endif %}
+                                            {% if i.S5 %}<li>{{ i.S5 }}</li>{% endif %}
+                                            {% if i.S6 %}<li>{{ i.S6 }}</li>{% endif %}
+                                            {% if i.S7 %}<li>{{ i.S7 }}</li>{% endif %}
+                                            {% if i.S8 %}<li>{{ i.S8 }}</li>{% endif %}
+                                            {% if i.S9 %}<li>{{ i.S9 }}</li>{% endif %}
+                                            {% if i.S10 %}<li>{{ i.S10 }}</li>{% endif %}
+                                            {% if i.S11 %}<li>{{ i.S11 }}</li>{% endif %}
+                                            {% if i.S12 %}<li>{{ i.S12 }}</li>{% endif %}
+                                            {% if i.S13 %}<li>{{ i.S13 }}</li>{% endif %}
+                                            {% if i.S14 %}<li>{{ i.S14 }}</li>{% endif %}
+                                            {% if i.S15 %}<li>{{ i.S15 }}</li>{% endif %}
+										</ul>
+									</div>
+
+								</div>
+							</div>
+							{% endfor %}
+
+
+						</div>
+					</div>
+				</div>
+				<!-- Your Profile Views Chart END-->
+			</div>
+		</div>
+	</main>
+
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "phonebook/base/base.html" %}
+
+{% block title %}My contacts{% endblock %}
+
+{% block header %}
+    {% include 'phonebook/base/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4 pull-left search-contact">
+            <form id="search_form" action="" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    {{ search_form.query }}
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+
+        <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#new-contact">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            'New contact'
+        </button>
+    </div>
+
+    <div class="row">
+        <table class="table table-condensed table-lists-contacts table-list-search">
+            <thead>
+                <tr>
+                    <th>'Contact'</th>
+                    <th>'Email'</th>
+                    <th class="phone">'Phone' %}</th>
+                    <th class="phone">'Mobile phone'</th>
+                    <th>Action </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                <tr>
+                    <td> {{ contact.firstname }} {{ contact.lastname }}</td>
+                    <td> <a href="">{{ contact.email }}</a></td>
+                    <td>
+                        {% if contact.phone %}
+                            <a target=""
+                               href="">
+                                {{ contact.phone }}
+                            </a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if contact.mobile_phone %}
+                            <a target=""
+                               href="">
+                                {{ contact.mobile_phone }}
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% block new_contact %}
+    {% include 'phonebook/modal/new_contact.html' %}
+{% endblock %}
+
+{% endblock %}

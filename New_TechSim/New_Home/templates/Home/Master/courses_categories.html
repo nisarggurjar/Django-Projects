@@ -1,0 +1,78 @@
+{% extends 'Home/Master/admin_base.html' %}
+{% load static %}
+{% block body %}
+
+<!--Main container start -->
+	<main class="ttr-wrapper">
+		<div class="container-fluid">
+			<div class="db-breadcrumb">
+				<ul class="db-breadcrumb-list">
+					<li><a href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a></li>
+					<li>All Courses Category</li>
+				</ul>
+			</div>
+			<div class="row">
+				<!-- Your Profile Views Chart -->
+				<div class="col-lg-6 m-b30">
+					<div class="widget-box">
+						<div class="wc-title">
+							<h4>All Courses Categories</h4>
+						</div>
+						<div class="widget-inner">
+							<div class="orders-list">
+								<ul>
+									{% for i in cats %}
+									<li>
+										<span class="orders-title">
+											<a href="" class="orders-title-name">{{ forloop.counter }}. {{ i.name }} </a>
+											<span class="orders-info">Number of Courses: {{ i.course_set.all.count }} | Date: {{ i.date }}</span>
+										</span>
+										<span class="orders-btn">
+
+                                            <a href="{% url 'courses_categories' 'Edit' i.id %}" class="btn button-sm green">Edit</a>
+											<a href= "{% url 'courses_categories' 'Delete' i.id %}" class="btn button-sm red">Delete</a>
+										</span>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-lg-6 m-b30">
+					<div class="widget-box">
+						<div class="wc-title">
+							<h4>Add New Category</h4>
+						</div>
+						<div class="widget-inner">
+							<form class="edit-profile m-b30" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+								<div class="row">
+									<div class="col-12">
+										<div class="ml-auto">
+											<h3>Add New Course Category</h3>
+										</div>
+									</div>
+									<div class="form-group col-10">
+										<label class="col-form-label">Course Category </label>
+										<div>
+											<input class="form-control" name="name" type="text" id = "text_in1" value="{{ cat.name }}"
+											>
+										</div>
+									</div>
+
+									<div class="col-12">
+										<button type="submit" class="btn">Add</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- Your Profile Views Chart END-->
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

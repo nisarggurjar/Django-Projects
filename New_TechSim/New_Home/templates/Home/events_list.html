@@ -1,0 +1,166 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+     <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="page-banner ovbl-dark" style="background-image:url('assets/images/banner/banner2.jpg');">
+            <div class="container">
+                <div class="page-banner-entry">
+                    <h1 class="text-white">Events</h1>
+				 </div>
+            </div>
+        </div>
+		<!-- Breadcrumb row -->
+		<div class="breadcrumb-row">
+			<div class="container">
+				<ul class="list-inline">
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li>Events</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Breadcrumb row END -->
+        <!-- contact area -->
+        <div class="content-block">
+			<!-- Portfolio  -->
+			<div class="section-area section-sp1 gallery-bx">
+				<div class="container">
+					<div class="feature-filters clearfix center m-b40">
+						<ul class="filters" data-toggle="buttons">
+							<li data-filter="all_event" class="btn active">
+								<input type="radio">
+								<a href="#"><span>All</span></a>
+							</li>
+							<li data-filter="happening" class="btn ">
+								<input type="radio">
+								<a href="#"><span>Happening</span></a>
+							</li>
+							<li data-filter="upcoming" class="btn">
+								<input type="radio">
+								<a href="#"><span>Upcoming</span></a>
+							</li>
+							<li data-filter="expired" class="btn">
+								<input type="radio">
+								<a href="#"><span>Expired</span></a>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix">
+						<ul id="masonry" class="ttr-gallery-listing magnific-image row">
+							{% for e in all %}
+								<li class="action-card col-lg-6 col-md-6 col-sm-12 all_event">
+									<div class="event-bx m-b30">
+										<div class="action-box">
+											<img src="{{ e.Event.img.url }}" alt="">
+										</div>
+										<div class="info-bx d-flex">
+											<div>
+												<div class="event-time">
+													<div class="event-date">{{ d.date }}</div>
+												</div>
+											</div>
+											<div class="event-info">
+												<h4 class="event-title"><a href="{% url 'events_details' e.Event.url %}">{{ e.title }}</a></h4>
+												<ul class="media-post">
+													<li><a href="event.html#"><i class="fa fa-clock-o"></i>{{ e.time }}</a></li>
+													<li><a href="event.html#"><i class="fa fa-map-marker"></i>{{ e.address }}</a></li>
+												</ul>
+												<p>{{ e.short_des }}</p>
+											</div>
+										</div>
+									</div>
+								</li>
+							{% endfor %}
+
+							{% for e in events %}
+							{% for d in e.dates_set.all %}
+								{% if d.start_date > today %}
+								<li class="action-card col-lg-6 col-md-6 col-sm-12 upcoming">
+									<div class="event-bx m-b30">
+										<div class="action-box">
+											<img src="{{ e.img.url }}" alt="">
+										</div>
+										<div class="info-bx d-flex">
+											<div>
+												<div class="event-time">
+													<div class="event-date">{{ d.date }}</div>
+												</div>
+											</div>
+											<div class="event-info">
+												<h4 class="event-title"><a href="{% url 'events_details' e.url %}">{{ e.title }}</a></h4>
+												<ul class="media-post">
+													<li><a href="event.html#"><i class="fa fa-clock-o"></i>{{ e.time }}</a></li>
+													<li><a href="event.html#"><i class="fa fa-map-marker"></i>{{ e.address }}</a></li>
+												</ul>
+												<p>{{ e.short_des }}</p>
+											</div>
+										</div>
+									</div>
+								</li>
+								{% endif %}
+
+								{% if d.start_date <= today and d.end_date >= today %}
+								<li class="action-card col-lg-6 col-md-6 col-sm-12 happening">
+									<div class="event-bx m-b30">
+										<div class="action-box">
+											<img src="{{ e.img.url }}" alt="">
+										</div>
+										<div class="info-bx d-flex">
+											<div>
+												<div class="event-time">
+													<div class="event-date">{{ d.date }}</div>
+												</div>
+											</div>
+											<div class="event-info">
+												<h4 class="event-title"><a href="{% url 'events_details' e.url %}">{{ e.title }}</a></h4>
+												<ul class="media-post">
+													<li><a href="event.html#"><i class="fa fa-clock-o"></i>{{ e.time }}</a></li>
+													<li><a href="event.html#"><i class="fa fa-map-marker"></i>{{ e.address }}</a></li>
+												</ul>
+												<p>{{ e.short_des }}</p>
+											</div>
+										</div>
+									</div>
+								</li>
+								{% endif %}
+
+
+								{% if d.end_date < today %}
+								<li class="action-card col-lg-6 col-md-6 col-sm-12 expired">
+									<div class="event-bx m-b30">
+										<div class="action-box">
+											<img src="{{ e.img.url }}" alt="">
+										</div>
+										<div class="info-bx d-flex">
+											<div>
+												<div class="event-time">
+													<div class="event-date">{{ d.date }}</div>
+												</div>
+											</div>
+											<div class="event-info">
+												<h4 class="event-title"><a href="{% url 'events_details' e.url %}">{{ e.title }}</a></h4>
+												<ul class="media-post">
+													<li><a href="event.html#"><i class="fa fa-clock-o"></i>{{ e.time }}</a></li>
+													<li><a href="event.html#"><i class="fa fa-map-marker"></i>{{ e.address }}</a></li>
+												</ul>
+												<p>{{ e.short_des }}</p>
+											</div>
+										</div>
+									</div>
+								</li>
+								{% endif %}
+
+
+                             {% endfor %}
+                            {% endfor %}
+
+						</ul>
+					</div>
+				</div>
+			</div>
+        </div>
+		<!-- contact area END -->
+    </div>
+    <!-- Content END-->
+{% endblock %}

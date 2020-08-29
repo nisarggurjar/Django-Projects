@@ -1,0 +1,124 @@
+
+{% extends "phonebook/base/base.html" %}
+
+
+{% block title %}'My contacts'{% endblock %}
+
+{% block header %}
+    {% include 'phonebook/base/header.html' %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<script type="text/javascript">
+		function Check(chk)
+		{
+		if(document.myform.Check_ctr.checked==true){
+		for (i = 0; i < chk.length; i++)
+		chk[i].checked = true ;
+		}else{
+
+		for (i = 0; i < chk.length; i++)
+		chk[i].checked = false ;
+		}
+		}
+		</script>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4 pull-left search-contact">
+            <form id="search_form" action="{% url 'phonebook_search_contact' %}" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    {{ search_form.query }}
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-4 pull-left ">
+            <form id="search_form" action="{% url 'add_group' %}" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    {{ AddGroup.group }}
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus-sign"></i>Add Group</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+
+        <td><button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#new-contact">
+            <span class="glyphicon glyphicon-minus-sign"></span>
+            New Contact
+        </button></td>
+                        <form class="form-inline" method="POST" action="{% url 'contacts' %}">
+                              {% csrf_token %}
+                                <div class="cs-wrapper">
+									<div class="btn btn-info pull-center" tabindex="0">
+										<select name="group_select" class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+					                    {% for group in groups %}
+												   <option value="{{ group.name }}">{{ group.name }}</option>
+                                        {% endfor %}
+                                        </select>
+                        <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-search"></i></button>
+                                  </div>
+								</div>
+                        </form>
+    </div>
+    <form name="myform" action="{% url 'send_sms' %}" method="post">
+        {% csrf_token %}
+                    <button type="submit" class="btn btn-info pull-right" data-toggle="modal" >
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                Send SMS
+            </button>
+
+          <table class="table table-condensed table-lists-contacts table-list-search">
+            <thead>
+                <tr>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th class="phone">Mobile phone</th>
+                    <th><b>Select All</b><input type="checkbox" name="Check_ctr" value="yes"
+		onClick="Check(document.myform.check_list)"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                <tr>
+                    <td> {{ contact.firstname }} {{ contact.lastname }}</td>
+                    <td> {{ contact.user_id_id }}</td>
+                    <td>
+                        {% if contact.mobile_phone %}
+                                {{ contact.mobile_phone }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'phonebook_edit' contact_id=contact.id %}" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="{% url 'phonebook_delete' contact_id=contact.id %}"
+                           onclick="return confirm('Do you really want to delete contact ?')" class="btn btn-danger">
+                           <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                        <input type="checkbox" name="check_list" value="{{ contact.mobile_phone }}">
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+    </div>
+</div>
+
+{% block hello %}
+    {% include 'phonebook/modal/new_contacts.html' %}
+{% endblock %}
+
+{% endblock %}

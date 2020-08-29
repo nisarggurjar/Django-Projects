@@ -1,0 +1,22 @@
+{% extends "phonebook/base/base.html" %}
+
+
+{% block content %}
+<div class="container">
+    <div class="form-login">
+        <form class="form-signin" method="post" action="">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">Login Page</h2>
+            {% if error %}
+                <div class="alert alert-danger">
+                    <p>"Username or password is not correct."</p>
+                </div>
+            {% endif %}
+            {{ form.username }}
+            {{ form.password }}
+            <button class="btn btn-info btn-block" type="submit">SignIn</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

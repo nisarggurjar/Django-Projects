@@ -1,0 +1,37 @@
+ <script type="text/javascript">
+
+
+		function Check(chk)
+		{
+		if(document.myform.Check_ctr.checked==true){
+		for (i = 0; i < chk.length; i++)
+		chk[i].checked = true ;
+		}else{
+
+		for (i = 0; i < chk.length; i++)
+		chk[i].checked = false ;
+		}
+		}
+
+
+		</script>
+
+
+ <form name="myform" action="{% url 'send_sms' %}" method="post">
+        {% csrf_token %}
+		 <input type="checkbox" name="Check_ctr" value="yes"
+		onClick="Check(document.myform.check_list)"><b>Check Control</b><br>
+
+		<b>Scripts for Web design and programming</b><br></br>
+
+			<input type="checkbox" name="check_list" value="1">9755788333<br>
+			<input type="checkbox" name="check_list" value="2">9755788666<br>
+			<input type="checkbox" name="check_list" value="3">7987968836<br>
+			<input type="checkbox" name="check_list" value="4">9893762256<br>
+			<input type="checkbox" name="check_list" value="5">9925678999<br>
+     <button type="submit" class="btn btn-info pull-right" data-toggle="modal" >
+            <span class="glyphicon glyphicon-minus-sign"></span>
+            New Contact
+        </button>
+
+	</form>

@@ -1,0 +1,176 @@
+{% extends 'Home/Master/admin_base.html' %}
+{% load static %}
+{% block body %}
+
+
+<script>
+    function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
+
+
+<style>
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+.centered {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered1 {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.centered2 {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+
+	<!--Main container start -->
+	<main class="ttr-wrapper">
+		<div class="container-fluid">
+			<div class="db-breadcrumb">
+				<ul class="db-breadcrumb-list">
+					<li><a href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a></li>
+					<li><a href="{% url 'courses' 'Main' 0 %}">Courses</a></li>
+					<li>Add New Courses</li>
+				</ul>
+			</div>
+			<div class="row">
+
+
+                    <div class="col-lg-12 m-b30">
+					<div class="widget-box">
+						<div class="wc-title">
+							<h4>Add New Course</h4>
+						</div>
+						<div class="widget-inner">
+							<form class="edit-profile m-b30" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+								<div class="row">
+                                    <div class=" col-12">
+                                        <center><img id="blah" src="" style="border-radius: 50%;" alt="" width="200" /></center>
+                                        <div class="centered"><h4> <span style="color:white;" id = "text1"></span></h4> </div>
+                                        <div class="centered1"><h1><span style="color:white;" id = "text2"></span></h1></div>
+                                        <div class="centered2"> <h4> <span style="color:white;" id = "text3"></span> </h4></div>
+									</div>
+
+									<div class="col-12">
+										<div class="ml-auto">
+											<h3>1. Trainer Basic Details</h3>
+										</div>
+									</div>
+									<div class="form-group col-6">
+										<label class="col-form-label">Trainer Name</label>
+										<div>
+											{{ form.name }}
+										</div>
+									</div>
+									<div class="form-group col-6">
+										<label class="col-form-label">Trainer Position</label>
+										<div>
+											{{ form.position }}
+										</div>
+									</div>
+
+									<div class="form-group col-6">
+										<label class="col-form-label">Trainer Review</label>
+										<div>
+											{{ form.review }}
+										</div>
+									</div>
+									<div class="form-group col-6">
+										<label class="col-form-label">Trainer Mail</label>
+										<div>
+											{{ form.mail }}
+										</div>
+									</div>
+
+									<div class="form-group col-6">
+										<label class="col-form-label">Trainer Profile</label>
+										<div>
+											{{ form.img }}
+										</div>
+									</div>
+
+									<div class="form-group col-6">
+										<label class="col-form-label">Trainer Description</label>
+										<div>
+											{{ form.des }}
+										</div>
+									</div>
+
+
+
+									<div class="col-12">
+										<button type="submit" class="btn">Save</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- Your Profile Views Chart END-->
+			</div>
+		</div>
+	</main>
+
+
+<script>
+function Add_Text1() {
+  var text1 = document.getElementById("text_in1").value;
+  var text2 = document.getElementById("text_in2").value;
+  var text3 = document.getElementById("text_in3").value;
+  document.getElementById("text1").innerHTML = text1;
+  document.getElementById("text2").innerHTML = text2;
+  document.getElementById("text3").innerHTML = text3;
+}
+
+</script>
+
+{% endblock %}

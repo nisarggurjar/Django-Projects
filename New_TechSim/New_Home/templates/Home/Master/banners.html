@@ -1,0 +1,58 @@
+{% extends 'Home/Master/admin_base.html' %}
+{% load static %}
+{% block body %}
+
+<main class="ttr-wrapper">
+		<div class="container-fluid">
+			<div class="db-breadcrumb">
+				<h4 class="breadcrumb-title">Courses</h4>
+				<ul class="db-breadcrumb-list">
+					<li><a href="courses.html#"><i class="fa fa-home"></i>Home</a></li>
+					<li>Courses</li>
+				</ul>
+			</div>
+			<div class="row">
+				<!-- Your Profile Views Chart -->
+				<div class="col-lg-12 m-b30">
+					<div class="widget-box">
+						<div class="wc-title">
+							<h4>Your All Banners</h4><br>
+                            <a href="{% url 'Add_New_Banner' %}" class="btn green radius-xl outline">Add New Banner</a>
+						</div>
+						<div class="widget-inner">
+						{% for b in banners %}
+							<div class="card-courses-list admin-courses">
+								<div class="card-courses-media">
+									<img src="{{ b.img.url }}" alt=""/>
+								</div>
+								<div class="card-courses-full-dec">
+									<div class="card-courses-title">
+										<h4>{{ b.l2 }}</h4>
+									</div>
+									<div class="">
+										<p>{{ b.l1 }}</p>
+									</div>
+
+									<div class="row card-courses-dec">
+										<div class="col-md-12">
+											<h6 class="m-b10"></h6>
+											<p>{{ b.l3 }} </p>
+										</div>
+										<div class="col-md-12">
+											<a href="{% url 'edit_New_Banner' b.id 'Edit' %}" class="btn green radius-xl outline">Edit</a>
+											<a href="{% url 'edit_New_Banner' b.id 'Delete' %}" class="btn red outline radius-xl ">Delete</a>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+				<!-- Your Profile Views Chart END-->
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

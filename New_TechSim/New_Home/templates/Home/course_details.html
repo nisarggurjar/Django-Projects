@@ -1,0 +1,209 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+<!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="page-banner ovbl-dark" style="background-image:url({{ i.img.url }});">
+            <div class="container">
+                <div class="page-banner-entry">
+                    <h1 class="text-white">{{ i.name }}</h1>
+				 </div>
+            </div>
+        </div>
+		<!-- Breadcrumb row -->
+		<div class="breadcrumb-row">
+			<div class="container">
+				<ul class="list-inline">
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li><a href="">Courses</a></li>
+					<li>{{ i.cat.name }}</li>
+					<li>{{ i.name }}</li>
+				</ul>
+			</div>
+		</div>
+	<div class="content-block">
+            <!-- About Us -->
+			<div class="section-area section-sp1">
+                <div class="container">
+					 <div class="row d-flex flex-row-reverse">
+						<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
+							<div class="course-detail-bx">
+								<div class="course-price">
+									<h4 class="price">&#8377; {{ i.fee }}</h4>
+								</div>
+								<div class="course-buy-now text-center">
+									<a href="courses-details.html#" class="btn radius-xl text-uppercase">Buy Now This Courses</a>
+								</div>
+								<div class="teacher-bx">
+									<div class="teacher-info">
+										<div class="teacher-thumb">
+											<img src="{{ i.img.url }}" alt=""/>
+										</div>
+										<div class="teacher-name">
+											<h5>{{ i.t1.name }}</h5>
+											<span>{{ i.t1.position }}</span>
+										</div>
+									</div>
+								</div>
+								<div class="cours-more-info">
+									<div class="review">
+										<span>Review Rating</span>
+										<ul class="cours-star">
+											{% if i.review >= 1 %}
+														<li class="active"><i class="fa fa-star"></i></li>
+													{% else %}
+														<li><i class="fa fa-star"></i></li>
+													{% endif %}
+
+													{% if i.review >= 2 %}
+														<li class="active"><i class="fa fa-star"></i></li>
+													{% else %}
+														<li><i class="fa fa-star"></i></li>
+													{% endif %}
+
+													{% if i.review >= 3 %}
+														<li class="active"><i class="fa fa-star"></i></li>
+													{% else %}
+														<li><i class="fa fa-star"></i></li>
+													{% endif %}
+
+													{% if i.review >= 4 %}
+														<li class="active"><i class="fa fa-star"></i></li>
+													{% else %}
+														<li><i class="fa fa-star"></i></li>
+													{% endif %}
+
+													{% if i.review >= 5 %}
+														<li class="active"><i class="fa fa-star"></i></li>
+													{% else %}
+														<li><i class="fa fa-star"></i></li>
+													{% endif %}
+										</ul>
+									</div>
+									<div class="price categories">
+										<span>Categories</span>
+										<h6 class="text-primary">{{ i.cat.name }}</h6>
+									</div>
+								</div>
+								<div class="course-info-list scroll-page">
+									<ul class="navbar">
+										<li><a class="nav-link" href="#overview"><i class="ti-zip"></i>Overview</a></li>
+										<li><a class="nav-link" href="#curriculum"><i class="ti-bookmark-alt"></i>Curriculum</a></li>
+										<li><a class="nav-link" href="#instructor"><i class="ti-user"></i>Instructor</a></li>
+										<li><a class="nav-link" href="#reviews"><i class="ti-comments"></i>Reviews</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-9 col-md-8 col-sm-12">
+							<div class="courses-post">
+								<div class="ttr-post-media media-effect">
+									<a href="courses-details.html#"><img src="{{ i.img.url }}" alt=""></a>
+								</div>
+								<div class="ttr-post-info">
+									<div class="ttr-post-title ">
+										<h2 class="post-title">{{ i.name }}</h2>
+									</div>
+									<div class="ttr-post-text">
+										<p>{{ i.short_des }}</p>
+									</div>
+								</div>
+							</div>
+							<div class="courese-overview" id="overview">
+								<h4>Overview</h4>
+								<div class="row">
+									<div class="col-md-12 col-lg-4">
+										<ul class="course-features">
+											<li><i class="ti-book"></i> <span class="label">Lectures</span> <span class="value">{{ i.classes }}</span></li>
+											<li><i class="ti-time"></i> <span class="label">Duration</span> <span class="value">{{ i.duration }}</span></li>
+											<li><i class="ti-hand-point-right"></i> <span class="label">MemberShip</span> <span class="value">Yes</span></li>
+											<li><i class="ti-layout-grid3-alt"></i> <span class="label">Projects</span> <span class="value">Yes</span></li>
+											<li><i class="ti-stats-up"></i> <span class="label">Skill level</span> <span class="value">{{ i.skill }}</span></li>
+											<li><i class="ti-smallcap"></i> <span class="label">Language</span> <span class="value">English</span></li>
+											<li><i class="ti-user"></i> <span class="label">Students</span> <span class="value">{{ i.students }}</span></li>
+											<li><i class="ti-check-box"></i> <span class="label">Assessments</span> <span class="value">Yes</span></li>
+										</ul>
+									</div>
+									<div class="col-md-12 col-lg-8">
+										<h5 class="m-b5">Course Description</h5>
+										<p>{{ i.long_des }}</p>
+										<h5 class="m-b5">Learning Outcomes</h5>
+										<ul class="list-checked primary">
+											<li>Over 37 lectures and 55.5 hours of content!</li>
+											<li>LIVE PROJECT End to End Software Testing Training Included.</li>
+											<li>Learn Software Testing and Automation basics from a professional trainer from your own desk.</li>
+											<li>Information packed practical training starting from basics to advanced testing techniques.</li>
+											<li>Best suitable for beginners to advanced level users and who learn faster when demonstrated.</li>
+											<li>Course content designed by considering current software testing technology and the job market.</li>
+											<li>Practical assignments at the end of every session.</li>
+											<li>Practical learning experience with live project work and examples.cv</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="m-b30" id="curriculum">
+								<h4>Curriculum</h4>
+								<ul class="curriculum-list">
+									{% for c in i.title_set.all %}
+									<li>
+											<h5 style="color:black;">Step - {{ forloop.counter }}: {{ c.name }}</h5>
+											<ul>
+												{% if c.S1 %}<li>{{ c.S1 }}</li>{% endif %}
+												{% if c.S2 %}<li>{{ c.S2 }}</li>{% endif %}
+												{% if c.S3 %}<li>{{ c.S3 }}</li>{% endif %}
+												{% if c.S4 %}<li>{{ c.S4 }}</li>{% endif %}
+												{% if c.S5 %}<li>{{ c.S5 }}</li>{% endif %}
+												{% if c.S6 %}<li>{{ c.S6 }}</li>{% endif %}
+												{% if c.S7 %}<li>{{ c.S7 }}</li>{% endif %}
+												{% if c.S8 %}<li>{{ c.S8 }}</li>{% endif %}
+												{% if c.S9 %}<li>{{ c.S9 }}</li>{% endif %}
+												{% if c.S10 %}<li>{{ c.S10 }}</li>{% endif %}
+												{% if c.S11 %}<li>{{ c.S11 }}</li>{% endif %}
+												{% if c.S12 %}<li>{{ c.S12 }}</li>{% endif %}
+												{% if c.S13 %}<li>{{ c.S13 }}</li>{% endif %}
+												{% if c.S14 %}<li>{{ c.S14 }}</li>{% endif %}
+												{% if c.S15 %}<li>{{ c.S15 }}</li>{% endif %}
+											</ul>
+										</li>
+										{% endfor %}
+									</ul>
+							</div>
+							<div class="" id="instructor">
+								<h4>Instructor</h4>
+								<div class="instructor-bx">
+									<div class="">
+										<img src="{{ i.t1.img.url }}" style="border-radius:90%;" width="200" alt="">
+									</div>
+									<div class="instructor-info">
+										<h6>{{ i.t1.name }}</h6>
+										<span>{{ i.t1.position }}</span>
+										<p class="m-b0">{{ i.t1.des }}</p>
+									</div>
+								</div>
+								{% if i.t2 %}
+								<div class="instructor-bx">
+									<div class="">
+										<img src="{{ i.t2.img.url }}" style="border-radius:90%;" width="200" alt="">
+									</div>
+									<div class="instructor-info">
+										<h6>{{ i.t2.name }}</h6>
+										<span>{{ i.t2.position }}</span>
+										<p class="m-b0">{{ i.t2.des }}</p>
+									</div>
+								</div>
+								{% endif %}
+							</div>
+						</div>
+
+					</div>
+				</div>
+            </div>
+        </div>
+		<!-- contact area END -->
+
+    </div>
+    <!-- Content END-->
+
+{% endblock %}

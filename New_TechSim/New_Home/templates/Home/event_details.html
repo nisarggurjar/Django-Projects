@@ -1,0 +1,115 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+<!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="page-banner ovbl-dark" style="background-image:url({% static 'TechSim/img3.jpg' %});">
+            <div class="container">
+                <div class="page-banner-entry">
+                    <h1 class="text-white">{{ i.title }}</h1>
+				 </div>
+            </div>
+        </div>
+
+		<div class="breadcrumb-row">
+			<div class="container">
+				<ul class="list-inline">
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li><a href="{% url 'all_events' %}">Events</a></li>
+					<li>Courses Details</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Breadcrumb row END -->
+        <!-- inner page banner END -->
+		<div class="content-block">
+            <!-- About Us -->
+			<div class="section-area section-sp1">
+                <div class="container">
+					 <div class="row">
+						<div class="col-lg-8 col-md-7 col-sm-12">
+							<div class="courses-post">
+								<div class="ttr-post-media media-effect">
+									<a href="events-details.html#"><img src="{{ i.img.url }}" alt=""></a>
+								</div>
+								<div class="ttr-post-info">
+									<div class="ttr-post-title ">
+										<h2 class="post-title">{{ i.title }}</h2>
+									</div>
+									<div class="ttr-post-text">
+										<p>{{ i.short_des }}</p></div>
+								</div>
+							</div>
+							<div class="courese-overview" id="overview">
+								<div class="row">
+									<div class="col-md-12 col-lg-5">
+										<ul class="course-features">
+											<li><i class="ti-book"></i> <span class="label">Topics</span> <span class="value">{{ i.topic }}</span></li>
+											<li><i class="ti-blackboard"></i> <span class="label">Starting</span> <span class="value">
+												{% for d in i.dates_set.all %}
+													{% if d.start_date > today %}
+															{{ d.start_date }}<br>
+													{% endif %}
+												{% endfor %}</span></li>
+											<li><i class="ti-layout-column3-alt"></i> <span class="label">Duration</span><span class="value">{{ i.duration }}</span></li>
+							 {% if i.time %}<li><i class="ti-time"></i> <span class="label">Time</span><span class="value">{{ i.time }}</span></li>{% endif %}
+											<li><i class="ti-stats-up"></i> <span class="label">Skill level</span> <span class="value">{{ i.skill }}</span></li>
+											<li><i class="ti-smallcap"></i> <span class="label">Language</span> <span class="value">English</span></li>
+											<li><i class="ti-user"></i> <span class="label">Students</span> <span class="value">{{ i.students }}</span></li>
+											<li><i class="ti-check-box"></i> <span class="label">Assessments</span> <span class="value">Yes</span></li>
+										</ul>
+									</div>
+									<div class="col-md-12 col-lg-7">
+										<h5 class="m-b5">Event Description</h5>
+										<p>{{ i.long_des }}</p>
+										<h5 class="m-b5">Event Content</h5>
+										<ul class="list-checked primary">
+											{% if i.l1 %}<li>{{ i.l1 }}</li>{% endif %}
+												{% if i.l2 %}<li>{{ i.l2 }}</li>{% endif %}
+												{% if i.l3 %}<li>{{ i.l3 }}</li>{% endif %}
+												{% if i.l4 %}<li>{{ i.l4 }}</li>{% endif %}
+												{% if i.l5 %}<li>{{ i.l5 }}</li>{% endif %}
+												{% if i.l6 %}<li>{{ i.l6 }}</li>{% endif %}
+												{% if i.l7 %}<li>{{ i.l7 }}</li>{% endif %}
+												{% if i.l8 %}<li>{{ i.l8 }}</li>{% endif %}
+												{% if i.l9 %}<li>{{ i.l9 }}</li>{% endif %}
+												{% if i.l10 %}<li>{{ i.l10 }}</li>{% endif %}
+										</ul>
+										<center><button class="btn btn-success" style="border-radios:50%;
+										 background-color:#6C3483"><span style="color:white;">Get Register</span></button></center>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-5 col-sm-12 m-b30">
+							<div class="bg-primary text-white contact-info-bx m-b30">
+								<h2 class="m-b10 title-head">Fee:<span></span></h2>
+								<div class="course-price">
+									<h4 class="price">&#8377; {{ i.fee }}</h4>
+								</div>
+								<h2 class="m-b10 title-head">Contact <span>Information</span></h2>
+								<p>Unique physical platform to attend this Event with your peers</p>
+								<div class="widget widget_getintuch">
+									<ul>
+										<li><i class="ti-location-pin"></i>{{ i.address }}</li>
+										<li><i class="ti-mobile"></i>{{ i.call }}</li>
+										<li><i class="ti-email"></i>{{ i.email }}</li>
+									</ul>
+								</div>
+								<center><button class="btn" style="background-color:white;"><span style="color:red;">Get Register</span></button></center>
+							</div>
+							{{ i.map | safe }}
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+		<!-- contact area END -->
+
+    </div>
+    <!-- Content END-->
+
+{% endblock %}

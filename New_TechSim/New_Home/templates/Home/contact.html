@@ -1,0 +1,119 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block body %}
+
+    <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="page-banner ovbl-dark" style="background-image:url({% static 'TechSim/assets/images/banner/banner3.jpg' %});">
+            <div class="container">
+                <div class="page-banner-entry">
+                    <h1 class="text-white">Get In Touch</h1>
+				 </div>
+            </div>
+        </div>
+		<!-- Breadcrumb row -->
+		<div class="breadcrumb-row">
+			<div class="container">
+				<ul class="list-inline">
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li>Contact Us</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Breadcrumb row END -->
+
+        <!-- inner page banner -->
+        <div class="page-banner contact-page section-sp2">
+            <div class="container">
+                <div class="row">
+					<div class="col-lg-5 col-md-5 m-b30">
+						<div class="bg-primary text-white contact-info-bx">
+							<h2 class="m-b10 title-head">Contact <span>Information</span></h2>
+							<p>Unique physical platform to attend trainings, build a network and collaborate with your peers</p>
+							<div class="widget widget_getintuch">
+								<ul>
+									<li><i class="ti-location-pin"></i>3rd Floor, Kalptaru Tower, Near Times Coaching, Z-II MP Nagar, Bhopal - 462011</li>
+									<li><i class="ti-mobile"></i>09893762256, 07389693197</li>
+									<li><i class="ti-email"></i>training@techsimplus.com</li>
+								</ul>
+							</div>
+							<h5 class="m-t0 m-b20">Follow Us</h5>
+							<ul class="list-inline contact-social-bx">
+								<li><a href="" class="btn outline radius-xl"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="" class="btn outline radius-xl"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="" class="btn outline radius-xl"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-7 col-md-7">
+						<form class="contact-bx ajax-form" action="assets/script/contact.php">
+						<div class="ajax-message"></div>
+							<div class="heading-bx left">
+								<h2 class="title-head">Get In <span>Touch</span></h2>
+								<p>Any question? Reach out to us and we’ll get back to you shortly.</p>
+							</div>
+							<div class="row placeani">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<div class="input-group">
+											<label>Your Name</label>
+											<input name="name" type="text" required class="form-control valid-character">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<div class="input-group">
+											<label>Your Email Address</label>
+											<input name="email" type="email" class="form-control" required >
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<div class="input-group">
+											<label>Your Phone</label>
+											<input name="phone" type="text" required class="form-control int-value">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<div class="input-group">
+											<label>Subject</label>
+											<input name="subject" type="text" required class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<label>Type Message</label>
+											<textarea name="message" rows="4" class="form-control" required ></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group">
+										<div class="input-group">
+											<div class="g-recaptcha" data-sitekey="6Lf2gYwUAAAAAJLxwnZTvpJqbYFWqVyzE-8BWhVe" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+											<input class="form-control d-none" style="display:none;" data-recaptcha="true" required data-error="Please complete the Captcha">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<button name="submit" type="submit" value="Submit" class="btn button-md"> Send Message</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+            </div>
+		</div>
+        <!-- inner page banner END -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14665.54060635332!2d77.4355722!3d23.2290676!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x340c769bf77ff5ac!2sTechSim%2B+-+Machine+Learning%2CPython+Blockchain%2CTableau+IOT+Embedded+System%2C+Julia+Training+in+Bhopal!5e0!3m2!1sen!2sin!4v1562390630034!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+    <!-- Content END-->
+
+{% endblock %}
